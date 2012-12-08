@@ -24,7 +24,7 @@ public class DisplayMessageActivity extends Activity {
 		textView.setText(message);
 
 		// Set the text view as the activity layout
-		// adding this comment to introduce change for commit
+		// adding this comment to introduce change for commit 2
 		setContentView(textView);
 
 		//getActionBar().setDisplayHomeAsUpEnabled(true);
