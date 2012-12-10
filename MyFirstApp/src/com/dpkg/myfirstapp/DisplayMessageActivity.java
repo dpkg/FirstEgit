@@ -4,8 +4,8 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.NavUtils;
-import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
 public class DisplayMessageActivity extends Activity {
@@ -14,28 +14,36 @@ public class DisplayMessageActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-		// Get the message from the intent
+		// extract data from the intent
 		Intent intent = getIntent();
 		String message = intent.getStringExtra(MainActivity.EXTRA_MESSAGE);
 
 		// Create the text view
-		TextView textView = new TextView(this);
-		textView.setTextSize(40);
-		textView.setText(message);
+		//		TextView textView = new TextView(this);
+		//		textView.setTextSize(40);
+		//		textView.setText(message);
 
 		// Set the text view as the activity layout
 		// adding this comment to introduce change for commit 3
-		setContentView(textView);
+		//setContentView(textView);
+		setContentView(R.layout.activity_display_message);
+
+		TextView txt = (TextView)findViewById(R.id.msg_content);
+		txt.setText(message);
 
 		//getActionBar().setDisplayHomeAsUpEnabled(true);
 	}
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.activity_display_message, menu);
-		return true;
+	public void goBackHome(View view) {
+		NavUtils.navigateUpFromSameTask(this);
 	}
+
+	//	@Override
+	//	public boolean onCreateOptionsMenu(Menu menu) {
+	//		// Inflate the menu; this adds items to the action bar if it is present.
+	//		getMenuInflater().inflate(R.menu.activity_display_message, menu);
+	//		return true;
+	//	}
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
